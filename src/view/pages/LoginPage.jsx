@@ -1,47 +1,62 @@
-import React, { useState } from 'react'
-import { Container } from '../components/Container/Container'
+import { useContext, useState } from 'react'
+import { useNavigate, Link } from 'react-router-dom'
 import './LoginPage.css'
+import { TaskContext } from '../../context/task'
 
-export function LoginPage ({ setUser }) {
-  const [nombre, setNombre] = useState('')
-  const [contraseña, setContraseña] = useState('')
-  const [error, setError] = useState(false)
+export const LoginPage = () => {
+  const { loginError, setLoginError } = useState(null)
+  const { dispatch } = useContext(TaskContext)
+  const navigate = useNavigate()
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-
-    if (nombre === '' || contraseña === '') {
-      setError(true)
-      return
-    }
-
-    setError(false)
-
-    setUser([nombre])
+  const handleLogin = (event) => {
+    event.preventDefault()
+    fetch('https://birsbane-numbat-zjcf.1.us-1.fl0.io/api/user/auth', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email: event.target.elements.email.value,
+        password: event.target.elements.password.value
+      })
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json()
+        } else {
+          throw new Error('Credenciales incorrectas')
+        }
+      })
+      .then((data) => {
+        dispatch({ type: 'LOGIN_USER', payload: data.user })
+        navigate('/dashboard')
+      }).catch(error => {
+        setLoginError(error)
+      })
   }
 
   return (
-    <Container>
-      <section>
-        <form
-          className='formulario'
-          onSubmit={handleSubmit}
-        >
-          <h1>Iniciar Sesión</h1>
-          <input
-            type='text'
-            value={nombre}
-            onChange={e => setNombre(e.target.value)}
-          />
-          <input
-            type='password'
-            value={contraseña}
-            onChange={e => setContraseña(e.target.value)}
-          />
-          <button>Iniciar Sesión</button>
-          {error && <p>Todos los campos son obligatorios</p>}
-        </form>
-      </section>
-    </Container>
+    <div className='container'>
+      <form onSubmit={handleLogin} className='container__form'>
+        <h1 className='form__title'>Bienvenid@</h1>
+
+        <div className='form__input'>
+          <i className='fas fa-envelope' />
+          <input type='email' name='email' placeholder='Ingresa tu email' />
+        </div>
+
+        <div className='form__input'>
+          <i className='fas fa-lock' />
+          <input type='password' name='password' placeholder='Ingresa tu contraseña' />
+        </div>
+
+        <button type='submit' className='btn__form'>Ingresar</button>
+
+        {loginError && (
+          <p className='error-message'>{loginError}</p>
+        )}
+
+        <Link to='registro' className='register__link'>Registrarse</Link>
+      </form>
+
+    </div>
   )
 }

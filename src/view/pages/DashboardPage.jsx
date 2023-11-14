@@ -1,15 +1,26 @@
 import React from 'react'
 
-export const DashboardPage = ({ user, setUser }) => {
-  const handleLogout = () => {
-    setUser([])
-  }
+export const DashboardPage = () => {
   return (
-    <div>
-      <h1>DashboardPage</h1>
-      <h2>{user}</h2>
-      <button onClick={handleLogout}>Cerrar Sesión</button>
-    </div>
-
+    <form>
+      <h1>To do List</h1>
+      <input
+        type='text'
+        placeholder='Introduce la tarea'
+      />
+      <input
+        type='text'
+        placeholder='Descripción'
+      />
+      <input
+        type='text'
+        placeholder='Fecha'
+      />
+      <input
+        type='submit'
+        className='btn'
+        value='AGREGAR'
+      />
+    </form>
   )
 }
