@@ -14,7 +14,7 @@ export const DashboardPage = () => {
       />
       <input
         type='text'
-        placeholder='Fecha'
+        placeholder='Fecha DD/MM/AAAA'
       />
       <input
         type='submit'
