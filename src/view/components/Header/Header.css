@@ -1,21 +1,13 @@
 *{
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 body{
     font-family: sans-serif;
     margin: 0;
     background-color: #fff59d;
-}
-
-a{
-    text-decoration: none;
-}
-
-ul{
-    list-style: none;
 }
 
 header {
@@ -28,6 +20,36 @@ header {
     padding: 10px;
     text-decoration: none;
     position: relative;
+}
+
+.menu {
+    background-color: coral;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-block: 20px;
+}
+
+.menu__lista {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.menu__item {
+    color: black;
+    list-style: none;
+}
+
+.menu__item a{
+    font-size: 700;
+    color: black;
+    text-decoration: none;
+}
+
+.menu__item--activo {
+    color: blue;
 }
 
 .logo{
@@ -49,29 +71,6 @@ header {
 .logo-nombre{
     text-decoration: none;
     color: black;
-}
-
-.nav-link{
-    list-style: none;
-}
-
-.nav-link li{
-    display: inline-block;
-    padding: 0 20px;
-}
-
-.nav-link li:hover{
-    transform: scale(1.1);
-}
-
-.nav-link a{
-    font-size: 700;
-    color: black;
-    text-decoration: none;
-}
-
-.nav-link li a:hover{
-    color: white;
 }
 
 @media (max-width:700px){

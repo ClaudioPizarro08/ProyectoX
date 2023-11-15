@@ -12,11 +12,12 @@ export const Header = () => {
 
       </div>
 
-      <ul>
-        <li className='nav-link'><Link to='/login'>Iniciar Sesión</Link></li>
-        <li className='nav-link'><Link to='/register'>Registrarse</Link></li>
-      </ul>
-
+      <nav className='menu'>
+        <ul className='menu__lista'>
+          <li className='menu__item menu__item--activo'><Link to='/login'>Iniciar Sesión</Link></li>
+          <li className='menu__item'><Link to='/register'>Registrarse</Link></li>
+        </ul>
+      </nav>
     </header>
   )
 }
