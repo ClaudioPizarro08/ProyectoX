@@ -9,3 +9,9 @@ th, td {
     border: solid 1px black;
     padding: 0;
 }
+
+@media only screen and (max-width: 900px) {
+    .RegisterPage{
+        width: 90%;
+    }
+}

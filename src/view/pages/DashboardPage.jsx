@@ -6,12 +6,10 @@ export const DashboardPage = () => {
   const { state, dispatch } = useContext(TaskContext)
 
   useEffect(() => {
-    console.log(state)
     fetch(`https://birsbane-numbat-zjcf.1.us-1.fl0.io/api/todo?userId=${state.user._id}`)
       .then((response) => response.json())
       .then((response) => {
         dispatch({ type: 'LOAD_TASKS', payload: response.todos })
-        console.log(state)
       })
   }, [])
 
@@ -29,6 +27,8 @@ export const DashboardPage = () => {
         window.alert('Se eliminó correctamente la tarea ' + response.todo.name)
         dispatch({ type: 'DELETE_TASK', payload: response.todo._id })
       })
+
+  
   }
 
   return (
@@ -49,6 +49,42 @@ export const DashboardPage = () => {
             ))}
           </tbody>
         </table>
+      </div>
+      <div>
+        <form>
+          <p>Name Task:</p>
+          <input
+            type='text'
+            id='nombre'
+            name='taskName'
+            textLabel='Nombre'
+            required
+          />
+          <p>Description:</p>
+          <input
+            type='text'
+            id='Descripción'
+            name='description'
+            textLabel='Descripción'
+            required
+          />
+          <p>Finish Data:</p>
+          <input
+            type='text'
+            id='date'
+            name='finishDate'
+            textLabel='Date:'
+            required
+          />
+          <p>Is Completed:</p>
+          <input
+            type='text'
+            id='completed'
+            name='isCompletes'
+            textLabel='Completed'
+            required
+          />
+        </form>
       </div>
 
     </>

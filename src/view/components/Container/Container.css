@@ -2,3 +2,9 @@
     max-width: 1110px;
     margin: 20px auto;
 }
+
+@media only screen and (max-width: 900px) {
+    .RegisterPage{
+        width: 90%;
+    }
+}
