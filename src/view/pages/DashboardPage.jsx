@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from 'react'
 import { TaskContext } from '../../context/task'
+import './DashboardPage.css'
 
 export const DashboardPage = () => {
   const { state, dispatch } = useContext(TaskContext)
