@@ -24,7 +24,7 @@ export const RegisterPage = () => {
 
         <button type='submit' className='btn__form'>Registrarse</button>
 
-        <Link to='registro' className='iniciarsesion__link'>Iniciar Sesión</Link>
+        <Link to='/login' className='iniciarsesion__link'>Iniciar Sesión</Link>
       </form>
 
     </div>
