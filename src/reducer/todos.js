@@ -9,7 +9,7 @@ export function reducer (state, action) {
       return { ...state, user: action.payload }
     case 'LOGOUT':
       return { ...state, user: null }
-    case 'LOAD_TASK':
+    case 'LOAD_TASKS':
       return { ...state, tasks: action.payload }
     case 'ADD_TASK':
       return { ...state, tasks: [...state.tasks, action.payload] }

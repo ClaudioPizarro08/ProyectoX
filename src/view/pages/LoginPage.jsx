@@ -7,6 +7,9 @@ export const LoginPage = () => {
   const { loginError, setLoginError } = useState(null)
   const { dispatch } = useContext(TaskContext)
   const navigate = useNavigate()
+  const handleClick = () => {
+    navigate('/register')
+  }
 
   const handleLogin = (event) => {
     event.preventDefault()
@@ -54,7 +57,7 @@ export const LoginPage = () => {
           <p className='error-message'>{loginError}</p>
         )}
 
-        <Link to='registro' className='register__link'>Registrarse</Link>
+        <Link to='registro' className='register__link' onClick={handleClick}>Registrarse</Link>
       </form>
 
     </div>

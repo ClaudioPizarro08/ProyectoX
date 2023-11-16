@@ -1,0 +1,11 @@
+.table__container {
+    background-color: white;
+    text-align: left;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    border: solid 1px black;
+    padding: 0;
+}

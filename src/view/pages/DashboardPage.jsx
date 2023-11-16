@@ -1,14 +1,16 @@
 import React, { useContext, useEffect } from 'react'
-import { initialState } from '../../reducer/todos'
+import { TaskContext } from '../../context/task'
 
 export const DashboardPage = () => {
-  const { state, dispatch } = useContext(TaskContext, initialState)
+  const { state, dispatch } = useContext(TaskContext)
 
   useEffect(() => {
-    fetch('https://birsbane-numbat-zjcf.1.us-1.fl0.io/api/todo?userId=}')
+    console.log(state)
+    fetch(`https://birsbane-numbat-zjcf.1.us-1.fl0.io/api/todo?userId=${state.user._id}`)
       .then((response) => response.json())
       .then((response) => {
         dispatch({ type: 'LOAD_TASKS', payload: response.todos })
+        console.log(state)
       })
   }, [])
 
@@ -33,8 +35,8 @@ export const DashboardPage = () => {
       <div className='task'>
         <table className='table__container'>
           <tbody>
-            {state.tasks.map((task) => (
-              <tr className='table__content' key={task.id}>
+            {state.tasks && state.tasks.map((task) => (
+              <tr className='table__content' key={task._id}>
                 <td><p>{task.name}</p></td>
                 <td><p>{task.description}</p></td>
                 <td><p>{task.finishDate}</p></td>
